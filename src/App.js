@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import './App'
 
-function App() {
+function GreetMe() {
+  const [fName, setFName] = useState('');
+  const [lName, setLName] = useState('');
+
+  const handleFNameChange = (event) => {
+    setFName(event.target.value);
+  };
+
+  const handleLNameChange = (event) => {
+    setLName(event.target.value);
+  };
+
+  const handleGreetMeClick = () => {
+    alert(`Hello ${fName} ${lName}!`);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <label htmlFor="f-name">First Name:</label>
+      <input type="text" id="f-name" value={fName} onChange={handleFNameChange} required /><br /><br />
+      <label htmlFor="l-name">Last Name:</label>
+      <input type="text" id="l-name" value={lName} onChange={handleLNameChange} required /><br /><br />
+      <button onClick={handleGreetMeClick}>Greet Me</button>
     </div>
   );
 }
 
-export default App;
+export default GreetMe;
